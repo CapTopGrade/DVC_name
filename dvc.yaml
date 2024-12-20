@@ -1,0 +1,15 @@
+stages:
+  baseline:
+    cmd: python train.py --force
+    deps:
+    - iris_data.csv
+    - train.py
+    outs:
+    - metrics.json
+  modified:
+    cmd: python train_modified.py
+    deps:
+    - iris_data.csv
+    - train_modified.py
+    outs:
+    - metrics_modified.json

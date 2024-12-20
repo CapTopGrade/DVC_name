@@ -1,15 +1,23 @@
 stages:
-  baseline:
-    cmd: python train.py --force
+  train:
+    cmd: python train.py
     deps:
-    - iris_data.csv
-    - train.py
+      - iris_data.csv
+      - train.py
     outs:
-    - metrics.json
-  modified:
-    cmd: python train_modified.py
+      - metrics.json
+      - metrics_modified.json
+      - metrics_graph.png
+      - correlation_matrix.png
+      - modified_metrics_graph.png  # Добавлен файл с графиками для модифицированных метрик
+
+  metrics_and_plots:
+    cmd: python metrics_and_plots.py
     deps:
-    - iris_data.csv
-    - train_modified.py
+      - metrics.json
+      - metrics_modified.json
+      - iris_data.csv
     outs:
-    - metrics_modified.json
+      - metrics_graph.png
+      - correlation_matrix.png
+      - modified_metrics_graph.png

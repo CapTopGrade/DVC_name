@@ -32,3 +32,63 @@ stages:
       hash: md5
       md5: 6d6b67400259d139f23e7a769026c9c8
       size: 836
+  train:
+    cmd: python train.py
+    deps:
+    - path: iris_data.csv
+      hash: md5
+      md5: 21d441a28bce4417276097df955afc50
+      size: 2928
+    - path: train.py
+      hash: md5
+      md5: f7cee942e1286740b63aec5e9a675481
+      size: 1404
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: 5932ba35784c6fee0dfa5c9e377fed31
+      size: 838
+  train_modified:
+    cmd: python train_modified.py
+    deps:
+    - path: iris_data.csv
+      hash: md5
+      md5: 21d441a28bce4417276097df955afc50
+      size: 2928
+    - path: train_modified.py
+      hash: md5
+      md5: 8e43452d6a69442498ad7858962b4848
+      size: 1330
+    outs:
+    - path: metrics_modified.json
+      hash: md5
+      md5: 6d6b67400259d139f23e7a769026c9c8
+      size: 836
+  metrics_and_plots:
+    cmd: python metrics_and_plots.py
+    deps:
+    - path: iris_data.csv
+      hash: md5
+      md5: 21d441a28bce4417276097df955afc50
+      size: 2928
+    - path: metrics.json
+      hash: md5
+      md5: 5932ba35784c6fee0dfa5c9e377fed31
+      size: 838
+    - path: metrics_modified.json
+      hash: md5
+      md5: 6d6b67400259d139f23e7a769026c9c8
+      size: 836
+    outs:
+    - path: baseline_metrics_graph.png
+      hash: md5
+      md5: 52ba5a6f4b914fb415b1df55a2458048
+      size: 25214
+    - path: correlation_matrix.png
+      hash: md5
+      md5: 164453f4ff3eca23a987b31e864b3551
+      size: 50600
+    - path: modified_metrics_graph.png
+      hash: md5
+      md5: 144bd5039bbbc6e918f5de75e8ced168
+      size: 26695

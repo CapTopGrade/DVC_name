@@ -2,3 +2,6 @@
 /metrics.json
 /metrics_modified.json
 /train_modified.py
+/baseline_metrics_graph.png
+/correlation_matrix.png
+/modified_metrics_graph.png
